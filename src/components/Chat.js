@@ -1,14 +1,16 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Navbar from "./Navbar";
 import ListContacts from "./ListContacts";
 import ChatRoom from "./ChatRoom";
+import Context from "../context";
 
 
 const Chat = () => {
 
-    return (
+    const { classLeftColumn } = useContext(Context)
+     return (
         <>
-            <div className="col_left">
+            <div className={classLeftColumn}>
                 <Navbar />
                 <ListContacts />
             </div>
