@@ -8,7 +8,6 @@ import Context from "../context";
 const AppRouter = () => {
     const {auth} = useContext(Context);
     const [user] = useAuthState(auth);
-    console.log("App Router = user", user);
 
     return user ?
         (

@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from "./Navbar";
-import ListPersons from "./ListPersons";
+import ListContacts from "./ListContacts";
 import ChatRoom from "./ChatRoom";
 
 
@@ -10,7 +10,7 @@ const Chat = () => {
         <>
             <div className="col_left">
                 <Navbar />
-                <ListPersons />
+                <ListContacts />
             </div>
             <div className="col_right">
                 <ChatRoom />

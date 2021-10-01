@@ -2,13 +2,13 @@ import React, {useContext, useState, useEffect} from 'react';
 import Context from "../context";
 
 const ChatRoom = () => {
-    const { dataChatRoom, data, sendMessage} = useContext(Context);
+    const { dataChatRoom, sendMessage} = useContext(Context);
     const [value, setValue] = useState('');
-    const [sendData, setSendData] = useState({id:dataChatRoom.id, message:''});
 
-    useEffect(()=>{
-        setSendData({id:dataChatRoom.id, message: value})
-    }, [dataChatRoom, data])
+    const handlerSend = (data) => {
+        sendMessage(data);
+        setValue('');
+    }
 
     return (
         <>
@@ -69,7 +69,7 @@ const ChatRoom = () => {
                                 onChange={(e) => setValue( e.target.value)}
                                 placeholder="Type your message" type="text" />
                         </div>
-                        <div onClick={sendMessage.bind(null, {id:dataChatRoom.id, message:value})}
+                        <div onClick={()=>handlerSend({id:dataChatRoom.id, message:value})}
                              className="wrapper_icon chat_box_icon">&#10146;</div>
                     </div>
 

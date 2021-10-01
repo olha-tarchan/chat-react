@@ -1,7 +1,7 @@
 export const mockData = [
     {
         id: 'kristen123',
-        name: 'Kristen',
+        name: 'Kristen Bell',
         photo: 'https://callforcode.org/wp-content/uploads/2020/05/CelebritySupporter_KristenBell-scaled.jpg',
         data: [
             {incoming:true, createdAt: 1632920801, message: 'It is a long established fact '},
@@ -12,7 +12,7 @@ export const mockData = [
     },
     {
         id: 'nRok123',
-        name: 'Rok',
+        name: 'the Rok',
         photo: 'https://ichef.bbci.co.uk/news/976/cpsprodpb/C26C/production/_111927794_gettyimages-1192169655.jpg',
         data: [
             {incoming:false, createdAt: 1632920801, message: 'opposed to using'},
