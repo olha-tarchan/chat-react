@@ -1,17 +1,15 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Context from "../context";
 
-const ListPersons = () => {
+const ListContacts = () => {
 
-    const {data, openChatRoom} = useContext(Context);
-    const sortData = [...data];
-    sortData.sort((a,b) =>  b.data[ b.data.length - 1].createdAt - a.data[ a.data.length - 1].createdAt )
+    const {data, openChatRoom, search, searchResult} = useContext(Context);
 
     return (
         <div className="persons">
             <div className="persons_list">
 
-                {data && sortData.map(us =>{
+                {searchResult && searchResult.map(us =>{
                     const lastMessage  = us.data[us.data.length-1];
                     return (
                         <div key={us.id} onClick={openChatRoom.bind(null, us)} className="persons_item">
@@ -148,4 +146,4 @@ const ListPersons = () => {
     );
 };
 
-export default ListPersons;
+export default ListContacts;
