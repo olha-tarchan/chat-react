@@ -1,20 +1,28 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState,useRef, useEffect} from 'react';
 import Context from "../context";
 import {formDateMessage} from '../utils/formatDate';
 
 const ChatRoom = () => {
-    const { dataChatRoom, sendMessage} = useContext(Context);
+    const { dataChatRoom, sendMessage, changeClassForLeftPanel} = useContext(Context);
     const [value, setValue] = useState('');
+    const elementRef = useRef(null)
 
     const handlerSend = (data) => {
         sendMessage(data);
         setValue('');
     }
 
+    const scrollBottom = () => {
+        elementRef.current.scrollIntoView()
+    }
+    useEffect(()=>{
+        scrollBottom();
+    }, [dataChatRoom, sendMessage])
+
     return (
         <>
             <div className="header">
-                <div className="header_chat">
+                <div className="header_chat"> <div onClick={changeClassForLeftPanel.bind(null, 'col_left')} className="btn-menu">&#10094; </div>
                     <div className="header_chat_img item_img img_select">
                         <div className="item_img">
                             <div className="item_img_img">
@@ -28,12 +36,11 @@ const ChatRoom = () => {
                         {dataChatRoom.name}
                     </div>
                 </div>
+
             </div>
             <div className="chat">
-                <div className="chat_messages">
-                    {dataChatRoom.name}
+                <div className="chat_messages"  >
                     {
-
                         dataChatRoom.name.length > 0 && dataChatRoom.data.map(obj => {
                             return (
                                 (obj.incoming) ?
@@ -60,6 +67,7 @@ const ChatRoom = () => {
                             )
                         })
                     }
+                    <i ref={elementRef} />
                 </div>
 
                 <div className="chat_send_message">

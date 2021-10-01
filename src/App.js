@@ -17,14 +17,15 @@ function App() {
   const [dataChatRoom, setDataChatRoom] = useState(data[0]);
   const [search, setSearch] = useState('');
   const [searchResult, setSearchResult] = useState([]);
-
   const [joke, setJoke] = useState('');
+  const [classLeftColumn, setClassLeftColumn] = useState('col_left')
 
   const generateJoke = () => {
     fetch(API_URL)
         .then(res => res.json())
         .then(data => setJoke(data.value));
   }
+
 
   useEffect(() => {
     if (!localStorage.getItem("dataChatReenbit")) {
@@ -58,8 +59,12 @@ function App() {
 
   }, [data, dataChatRoom, search]);
 
+  const changeClassForLeftPanel = (data) => {
+    setClassLeftColumn(data);
+  }
   const openChatRoom = (dataForm) => {
     setDataChatRoom(dataForm);
+    changeClassForLeftPanel('col_left active')
   }
   const handlerSearch = (dataSearch) => {
     setSearch(dataSearch);
@@ -114,16 +119,12 @@ function App() {
           dataChatRoom,
           search,
           handlerSearch,
-          searchResult
+          searchResult,
+          classLeftColumn,
+          changeClassForLeftPanel
         }}>
-          <div className="container">
+          <div className="container" >
             <div className="row">
-              {/*<p>{joke}</p>
-              <button
-                  onClick={generateJoke}
-              >
-                Joke
-              </button>*/}
               <AppRouter/>
             </div>
           </div>

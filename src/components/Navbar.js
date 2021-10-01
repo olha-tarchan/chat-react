@@ -10,7 +10,6 @@ const Navbar = () => {
     
     return (
         <header className="header">
-
             <div className="header_logo">
                 <div className="item_img img_select">
                     <div className="header_logo_img item_img_img">
@@ -18,7 +17,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-            {user && <button onClick={() => auth.signOut()}>Out as {user.email}</button> }
+            {/*{user && <button onClick={() => auth.signOut()}>Out as {user.email}</button> }*/}
             <SearchFilter />
             <div className="header_title">Chats</div>
         </header>
