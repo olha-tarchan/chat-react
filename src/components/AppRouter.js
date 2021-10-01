@@ -12,7 +12,6 @@ const AppRouter = () => {
     return user ?
         (
             <Switch>
-                console.log("Component", Component);
                 {privateRoutes.map(({path, Component}) =>
                     <Route path={path} key={path} component={Component} exact={true} />
                 )}

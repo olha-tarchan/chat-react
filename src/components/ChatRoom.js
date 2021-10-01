@@ -1,5 +1,6 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext, useState} from 'react';
 import Context from "../context";
+import {formDateMessage} from '../utils/formatDate';
 
 const ChatRoom = () => {
     const { dataChatRoom, sendMessage} = useContext(Context);
@@ -46,14 +47,14 @@ const ChatRoom = () => {
                                         </div>
                                         <div className="item_info">
                                             <div className="item_sms">{obj.message}</div>
-                                            <div className="item_date">{obj.createdAt}</div>
+                                            <div className="item_date">{formDateMessage(obj.createdAt)}</div>
                                         </div>
                                     </div>
                                     :
                                     <div key={obj.createdAt} className='message_item item_right'>
                                         <div className="item_info">
                                             <div className="item_sms">{obj.message}</div>
-                                            <div className="item_date">{obj.createdAt}</div>
+                                            <div className="item_date">{formDateMessage(obj.createdAt)}</div>
                                         </div>
                                     </div>
                             )
@@ -72,9 +73,7 @@ const ChatRoom = () => {
                         <div onClick={()=>handlerSend({id:dataChatRoom.id, message:value})}
                              className="wrapper_icon chat_box_icon">&#10146;</div>
                     </div>
-
                 </div>
-
             </div>
         </>
     );

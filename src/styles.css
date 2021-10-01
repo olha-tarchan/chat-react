@@ -204,11 +204,15 @@ button:hover {
 .persons_list .persons_item_text {
   font-size: 16px;
   color: #c9c9c9;
+  width: 100%;
+  height: 37px;
+  overflow: hidden;
 }
 .persons_list .persons_item_date {
   flex: 0 0 30%;
   max-width: 30%;
   text-align: right;
+  min-width: 110px;
 }
 
 .header_chat {

@@ -1,9 +1,10 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext} from 'react';
 import Context from "../context";
+import {formatDate} from '../utils/formatDate';
 
 const ListContacts = () => {
 
-    const {data, openChatRoom, search, searchResult} = useContext(Context);
+    const {openChatRoom, searchResult} = useContext(Context);
 
     return (
         <div className="persons">
@@ -24,7 +25,7 @@ const ListContacts = () => {
                                 <div className="persons_item_name">{us.name}</div>
                                 <div className="persons_item_text">{lastMessage.message}</div>
                             </div>
-                            <div className="persons_item_date">{lastMessage.createdAt}</div>
+                            <div className="persons_item_date">{formatDate(lastMessage.createdAt)}</div>
                         </div>
                     )
                 }

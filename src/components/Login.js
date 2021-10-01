@@ -8,16 +8,6 @@ const Login = () => {
     const handleSignIn = async() => {
         const googleProvider = new firebase.auth.GoogleAuthProvider();
         const {user} = await auth.signInWithPopup(googleProvider);
-        console.log(user);
-
-        //const { user } = await auth().signInWithPopup(googleProvider);
-            // .then((res) => {
-            //     console.log(res)
-            // })
-            // .catch((er)=>{
-            //     console.log(er)
-            // })
-
     }
 
     return (
