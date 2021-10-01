@@ -10,6 +10,7 @@ import {sortData} from './utils/sortData';
 
 const auth = firebase.auth();
 const firestore = firebase.firestore();
+const API_URL = 'https://api.chucknorris.io/jokes/random';
 
 function App() {
   const [data, setData] = useState(mockData);
@@ -17,6 +18,13 @@ function App() {
   const [search, setSearch] = useState('');
   const [searchResult, setSearchResult] = useState([]);
 
+  const [joke, setJoke] = useState('');
+
+  const generateJoke = () => {
+    fetch(API_URL)
+        .then(res => res.json())
+        .then(data => setJoke(data.value));
+  }
 
   useEffect(() => {
     if (!localStorage.getItem("dataChatReenbit")) {
@@ -31,6 +39,8 @@ function App() {
       setDataChatRoom(fromLocalStorage[0]);
       setSearchResult(fromLocalStorage);
     }
+
+    generateJoke();
   }, []);
 
   useEffect(() => {
@@ -45,14 +55,19 @@ function App() {
     } else {
       setSearchResult(data);
     }
+
   }, [data, dataChatRoom, search]);
 
   const openChatRoom = (dataForm) => {
     setDataChatRoom(dataForm);
   }
+  const handlerSearch = (dataSearch) => {
+    setSearch(dataSearch);
+  }
 
   const sendMessage = (formData) => {
     const newData = [...data];
+
     newData.map(e => {
       if (e.id === formData.id) {
         e.data.push({
@@ -61,14 +76,32 @@ function App() {
           message: formData.message
         })
       }
+      return e;
     })
     const dataAfterSorting = sortData(newData)
     setData(dataAfterSorting);
     localStorage.setItem("dataChatReenbit", JSON.stringify(dataAfterSorting));
+    generateJoke();
+    setTimeout(() => {
+          responseMessage(formData.id)
+    }, 10000);
+    clearTimeout(10000)
   };
 
-  const handlerSearch = (dataSearch) => {
-    setSearch(dataSearch);
+ const responseMessage = (id) => {const newData = [...data];
+    newData.map(e => {
+      if (e.id === id) {
+        e.data.push({
+          incoming: true,
+          createdAt: Date.now(),
+          message: joke
+        });
+      }
+      return e;
+    })
+    const dataAfterSorting = sortData(newData)
+    setData(dataAfterSorting);
+    localStorage.setItem("dataChatReenbit", JSON.stringify(dataAfterSorting));
   }
   return (
       <BrowserRouter>
@@ -85,6 +118,12 @@ function App() {
         }}>
           <div className="container">
             <div className="row">
+              {/*<p>{joke}</p>
+              <button
+                  onClick={generateJoke}
+              >
+                Joke
+              </button>*/}
               <AppRouter/>
             </div>
           </div>
