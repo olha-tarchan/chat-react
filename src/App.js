@@ -71,6 +71,9 @@ function App() {
   }
 
   const sendMessage = (formData) => {
+    if(formData.message.trim().length < 1 ){
+      return false;
+    }
     const newData = [...data];
 
     newData.map(e => {
