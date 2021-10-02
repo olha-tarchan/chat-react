@@ -10,12 +10,17 @@
   box-sizing: border-box;
 }
 
+#root {
+  height: 100%;
+  display: flex;
+  align-items: end;
+}
+
 html, body {
   background: #fafafa;
   color: #7b7b7b;
   font-size: 14px;
-  height: 100vh;
-  overflow: hidden;
+  height: 100%;
 }
 
 input, textarea, button {
@@ -95,8 +100,7 @@ button:hover {
 .container {
   display: block;
   width: 100%;
-  margin-top: 20px;
-  height: 102vh;
+  height: 100%;
 }
 
 .row {
@@ -116,12 +120,16 @@ button:hover {
   justify-content: center;
   align-items: center;
 }
-.col-12.center form {
-  border: 1px solid #eeeeee;
-  border-radius: 20px;
+.col-12.center .form-login {
   padding: 20px;
-  height: 200px;
   width: 300px;
+  text-align: center;
+}
+.col-12.center .form-login button {
+  background-color: #43b9ea;
+  color: #ffffff;
+  width: auto;
+  padding: 10px 20px;
 }
 
 .col_left {
@@ -138,7 +146,7 @@ button:hover {
     max-width: 100%;
     width: 100%;
     position: absolute;
-    height: 100vh;
+    height: 100%;
     z-index: 2;
     transform: translateX(0%);
     -webkit-transition: all 0.3s ease 0s;
@@ -169,7 +177,7 @@ button:hover {
 }
 @media (max-width: 540px) {
   .header {
-    padding: 20px 0 0 0;
+    padding: 0;
   }
 }
 .header_title {
@@ -178,8 +186,13 @@ button:hover {
   padding: 40px 0 40px 20px;
   background-color: #ffffff;
 }
+@media (max-width: 540px) {
+  .header_title {
+    padding: 10px 0 10px 20px;
+  }
+}
 .header_logo {
-  padding: 40px 20px 20px 20px;
+  padding: 20px;
 }
 .header .search_box {
   padding: 0 20px 10px 20px;
@@ -203,8 +216,13 @@ button:hover {
 
 .persons {
   background-color: #ffffff;
-  height: calc(100% - 255px);
+  height: calc(100% - 275px);
   overflow: auto;
+}
+@media (max-width: 540px) {
+  .persons {
+    height: calc(100% - 218px);
+  }
 }
 
 .persons_list {
@@ -223,6 +241,11 @@ button:hover {
 @media (max-width: 820px) {
   .persons_list .persons_item {
     flex-wrap: wrap;
+  }
+}
+@media (max-width: 520px) {
+  .persons_list .persons_item {
+    flex-wrap: nowrap;
   }
 }
 .persons_list .persons_item:hover {
@@ -252,6 +275,12 @@ button:hover {
     max-width: 65%;
   }
 }
+@media (max-width: 520px) {
+  .persons_list .persons_item_info {
+    flex: 1 2 50%;
+    max-width: 50%;
+  }
+}
 .persons_list .persons_item_date {
   text-align: left;
   padding: 10px 10px 10px 0;
@@ -261,6 +290,11 @@ button:hover {
     padding: 5px 15px 0 0;
     width: 100%;
     text-align: right;
+  }
+}
+@media (max-width: 520px) {
+  .persons_list .persons_item_date {
+    width: 30%;
   }
 }
 .persons_list .persons_item_name {
@@ -297,7 +331,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  height: calc(100% - 95px);
+  height: calc(100% - 116px);
 }
 .chat_messages {
   padding: 20px;

@@ -17,7 +17,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-            {/*{user && <button onClick={() => auth.signOut()}>Out as {user.email}</button> }*/}
+            {user && <button onClick={() => auth.signOut()}>Out as {user.email}</button> }
             <SearchFilter />
             <div className="header_title">Chats</div>
         </header>

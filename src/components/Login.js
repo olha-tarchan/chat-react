@@ -15,7 +15,7 @@ const Login = () => {
             <div className="form-login">
                 <button
                     onClick={handleSignIn}
-                >Sigh In</button>
+                >Sigh In Google</button>
             </div>
         </div>
     );
