@@ -16,8 +16,11 @@ const Navbar = () => {
                         <div className="item_img_img-cover" style={{backgroundImage: `url(${photoUrl})`}}>1</div>
                     </div>
                 </div>
+                <div>
+                    {user && <button className="logout" onClick={() => auth.signOut()}>Log out</button> }
+                </div>
             </div>
-            {/*{user && <button onClick={() => auth.signOut()}>Out as {user.email}</button> }*/}
+
             <SearchFilter />
             <div className="header_title">Chats</div>
         </header>

@@ -13,7 +13,7 @@ const ChatRoom = () => {
     }
 
     const scrollBottom = () => {
-        elementRef.current.scrollIntoView()
+        elementRef.current.scrollIntoView({behavior: "smooth"});
     }
     useEffect(()=>{
         scrollBottom();

@@ -13,6 +13,7 @@ const Login = () => {
     return (
         <div className="col-12 center">
             <div className="form-login">
+                <p>People of the List will text you  jokes or facts about Chuck Norris when you send message</p>
                 <button
                     onClick={handleSignIn}
                 >Sigh In Google</button>

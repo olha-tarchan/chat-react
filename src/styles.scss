@@ -50,6 +50,9 @@ button:hover {
   background-color: $blue;
   color:$white;
 }
+button.logout {
+  padding: 10px 10px 10px 10px;
+}
 .item_img {
   width: 50px;
   height: 50px;
@@ -123,13 +126,17 @@ button:hover {
   align-items: center;
   & .form-login {
     padding: 20px;
-    width: 300px;
+    width: 350px;
     text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 25px 0 rgb(0 0 0 / 10%) !important;
 
     & button {
       background-color: $blue;
       color:#ffffff;
       width: auto;
+      margin: 20px 0 0 0;
       padding: 10px 20px;
     }
   }
@@ -148,7 +155,6 @@ button:hover {
     max-width: 100%;
     width: 100%;
     position: absolute;
-    //height: 100vh;
     height: 100%;
     z-index: 2;
     transform: translateX(0%);
@@ -188,6 +194,8 @@ button:hover {
   }
   &_logo {
     padding: 20px;
+    display: flex;
+    justify-content: space-between;
   }
   & .search_box {
     padding: 0 20px 10px 20px;

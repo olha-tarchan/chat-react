@@ -26,27 +26,25 @@ function App() {
         .then(data => setJoke(data.value));
   }
 
-
   useEffect(() => {
-    if (!localStorage.getItem("dataChatReenbit")) {
+    if (!localStorage.getItem("dataChatJokes")) {
       const dataAfterSorting = sortData(data);
-      localStorage.setItem("dataChatReenbit", JSON.stringify(dataAfterSorting));
+      localStorage.setItem("dataChatJokes", JSON.stringify(dataAfterSorting));
       setData(dataAfterSorting);
       setDataChatRoom(dataAfterSorting[0]);
       setSearchResult(dataAfterSorting)
     } else {
-      const fromLocalStorage = JSON.parse(localStorage.getItem("dataChatReenbit"));
+      const fromLocalStorage = JSON.parse(localStorage.getItem("dataChatJokes"));
       setData(fromLocalStorage);
       setDataChatRoom(fromLocalStorage[0]);
       setSearchResult(fromLocalStorage);
     }
-
     generateJoke();
   }, []);
 
   useEffect(() => {
     const dataAfterSorting = sortData(data);
-    localStorage.setItem("dataChatReenbit", JSON.stringify(dataAfterSorting));
+    localStorage.setItem("dataChatJokes", JSON.stringify(dataAfterSorting));
 
     if(search !== '') {
       const newContactList = data.filter((c) => {
@@ -88,12 +86,12 @@ function App() {
     })
     const dataAfterSorting = sortData(newData)
     setData(dataAfterSorting);
-    localStorage.setItem("dataChatReenbit", JSON.stringify(dataAfterSorting));
+    localStorage.setItem("dataChatJokes", JSON.stringify(dataAfterSorting));
     generateJoke();
     setTimeout(() => {
           responseMessage(formData.id)
-    }, 10000);
-    clearTimeout(10000)
+    }, 1500);
+    clearTimeout(1500)
   };
 
  const responseMessage = (id) => {const newData = [...data];
@@ -109,7 +107,7 @@ function App() {
     })
     const dataAfterSorting = sortData(newData)
     setData(dataAfterSorting);
-    localStorage.setItem("dataChatReenbit", JSON.stringify(dataAfterSorting));
+    localStorage.setItem("dataChatJokes", JSON.stringify(dataAfterSorting));
   }
   return (
       <BrowserRouter>
