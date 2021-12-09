@@ -5,7 +5,7 @@ import {formDateMessage} from '../utils/formatDate';
 const ChatRoom = () => {
     const { dataChatRoom, sendMessage, changeClassForLeftPanel} = useContext(Context);
     const [value, setValue] = useState('');
-    const elementRef = useRef(null)
+    const elementRef = useRef(null);
 
     const handlerSend = (data) => {
         sendMessage(data);
@@ -89,22 +89,3 @@ const ChatRoom = () => {
 
 export default ChatRoom;
 
-{/*
-                      <div className="message_item item_left">
-                        <div className="item_img">
-                            <div className="item_img_img">
-                                <img src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/optimus-prime.jpeg" alt=""/>
-                            </div>
-                        </div>
-                        <div className="item_info">
-                            <div className="item_sms">Quickly come to the meeting!</div>
-                            <div className="item_date">4/22/21, 4:10 AM</div>
-                        </div>
-                    </div>
-                    <div className="message_item item_right">
-                        <div className="item_info">
-                            <div className="item_sms">Quickly come to the meeting!</div>
-                            <div className="item_date">4/22/21, 4:10 AM</div>
-                        </div>
-                    </div>*/
-}

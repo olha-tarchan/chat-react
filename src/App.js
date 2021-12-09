@@ -27,25 +27,17 @@ function App() {
   }
 
   useEffect(() => {
-    if (!localStorage.getItem("dataChatJokes")) {
-      const dataAfterSorting = sortData(data);
-      localStorage.setItem("dataChatJokes", JSON.stringify(dataAfterSorting));
-      setData(dataAfterSorting);
-      setDataChatRoom(dataAfterSorting[0]);
-      setSearchResult(dataAfterSorting)
-    } else {
-      const fromLocalStorage = JSON.parse(localStorage.getItem("dataChatJokes"));
-      setData(fromLocalStorage);
-      setDataChatRoom(fromLocalStorage[0]);
-      setSearchResult(fromLocalStorage);
-    }
+    const dataFromLocalStorage = JSON.parse(localStorage.getItem("dataChatJokes")) || sortData(data);
+    setData(dataFromLocalStorage);
+    setDataChatRoom(dataFromLocalStorage[0]);
+    setSearchResult(dataFromLocalStorage);
     generateJoke();
   }, []);
+
 
   useEffect(() => {
     const dataAfterSorting = sortData(data);
     localStorage.setItem("dataChatJokes", JSON.stringify(dataAfterSorting));
-
     if(search !== '') {
       const newContactList = data.filter((c) => {
         return c.name.replace(/\s+/g, '').toLowerCase().includes(search.replace(/\s+/g, '').toLowerCase() )
@@ -54,13 +46,13 @@ function App() {
     } else {
       setSearchResult(data);
     }
-
   }, [data, dataChatRoom, search]);
 
   const changeClassForLeftPanel = (data) => {
     setClassLeftColumn(data);
   }
   const openChatRoom = (dataForm) => {
+
     setDataChatRoom(dataForm);
     changeClassForLeftPanel('col_left active')
   }
